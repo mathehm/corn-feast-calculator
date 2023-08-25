@@ -7,17 +7,17 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "commit": "cz"
+    "commit": "npx git-cz"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@types/node": "^18.17.3",
-    "cz-conventional-changelog": "^3.3.0",
+    "git-cz": "^4.9.0",
     "nuxt": "^3.6.5"
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": " git-cz "
     }
   }
 }
