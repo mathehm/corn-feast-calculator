@@ -51,19 +51,70 @@ describe('Bloco de testes', async () => {
 
   it('Testa visualização do input ao clicar botão de adição', async () => {
     const wrapper = mount(App)
-    const input = wrapper.find('.container__result')
-    expect(input.text()).toBe('0')
+    const result = wrapper.find('.container__result')
+    expect(result.text()).toBe('0')
     const buttonAdd = wrapper.find('.addition')
     await buttonAdd.trigger('click')
-    expect(input.text()).toBe('1')
+    expect(result.text()).toBe('1')
   })
 
   it('Testa visualização do input ao clicar botão de subtração', async () => {
     const wrapper = mount(App)
-    const input = wrapper.find('.container__result')
-    expect(input.text()).toBe('0')
+    const result = wrapper.find('.container__result')
+    expect(result.text()).toBe('0')
     const buttonSub = wrapper.find('.subtraction')
     await buttonSub.trigger('click')
-    expect(input.text()).toBe('-1')
+    expect(result.text()).toBe('-1')
+  })
+
+  it('Testa input de valor a ser adicionado ou subtraido', () => {
+    const wrapper = mount(App)
+    const input = wrapper.find('.container__input')
+    expect(input.exists()).toBe(true)
+  })
+
+  it('Testa inserir novo valor no input', async () => {
+    const wrapper = mount(App)
+    const input = wrapper.find('.container__input')
+    const inputHtml = input.element as HTMLInputElement
+    expect(inputHtml.value).toBe('1')
+    await input.setValue(10)
+    expect(inputHtml.value).toBe('10')
+  })
+
+  it('Testa se a adicão está funcionando com o input com valor atualizado', async () => {
+    const wrapper = mount(App)
+    const input = wrapper.find('.container__input')
+    const buttonAdd = wrapper.find('.addition')
+    const result = wrapper.find('.container__result')
+
+    expect(result.text()).toBe('0')
+    await input.setValue('7')
+    await buttonAdd.trigger('click')
+    expect(result.text()).toBe('7')
+
+    await input.setValue('1')
+    await buttonAdd.trigger('click')
+    await buttonAdd.trigger('click')
+    await buttonAdd.trigger('click')
+    expect(result.text()).toBe('10')
+  })
+
+  it('Testa se a subtração está funcionando com o input com valor atualizado', async () => {
+    const wrapper = mount(App)
+    const input = wrapper.find('.container__input')
+    const buttonAdd = wrapper.find('.subtraction')
+    const result = wrapper.find('.container__result')
+
+    expect(result.text()).toBe('0')
+    await input.setValue('7')
+    await buttonAdd.trigger('click')
+    expect(result.text()).toBe('-7')
+
+    await input.setValue('1')
+    await buttonAdd.trigger('click')
+    await buttonAdd.trigger('click')
+    await buttonAdd.trigger('click')
+    expect(result.text()).toBe('-10')
   })
 })

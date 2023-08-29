@@ -2,9 +2,10 @@
   <div class="container">
     <h1 class="container__title">Project to train tests with Vitest</h1>
     <p class="container__result">{{ count }}</p>
+    <input v-model="input" class="container__input" type="number" />
     <div class="container__buttons">
-      <button class="addition" @click="count = count + 1">+</button>
-      <button class="subtraction" @click="count = count - 1">-</button>
+      <button class="addition" @click="count = count + input">+</button>
+      <button class="subtraction" @click="count = count - input">-</button>
     </div>
   </div>
 </template>
@@ -12,6 +13,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 const count: Ref<number> = ref(0)
+const input: Ref<number> = ref(1)
 </script>
 
 <style scoped lang="scss">
@@ -58,6 +60,16 @@ const count: Ref<number> = ref(0)
     background-color: rgba(137, 43, 226, 0.1);
     font-size: 3rem;
     font-weight: 900;
+  }
+
+  &__input {
+    border: 1 solid blueviolet;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 8.5rem;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-align: center;
   }
 
   &__buttons {
