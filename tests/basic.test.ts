@@ -4,7 +4,7 @@ import { setup, $fetch, isDev } from '@nuxt/test-utils'
 import { mount } from '@vue/test-utils'
 
 // imports
-import App from  './app.vue'
+import App from './app.vue'
 
 // describe('example', async () => {
 //   await setup({
@@ -23,7 +23,7 @@ import App from  './app.vue'
 //   }
 // })
 
-describe('Bloco de testes', async() => {
+describe('Bloco de testes', async () => {
   // await setup({
   //   rootDir: fileURLToPath(new URL('..', import.meta.url)),
   //   server: true
@@ -31,8 +31,12 @@ describe('Bloco de testes', async() => {
 
   it('Testa texto do título', () => {
     const wrapper = mount(App)
-    expect(wrapper.find('.container__title').html().includes('</h1>')).toBe(true)
-    expect(wrapper.find('.container__title').text()).toEqual('Project to train tests with Vitest')
+    expect(wrapper.find('.container__title').html().includes('</h1>')).toBe(
+      true,
+    )
+    expect(wrapper.find('.container__title').text()).toEqual(
+      'Project to train tests with Vitest',
+    )
   })
 
   it('Testa botão de adição', () => {
