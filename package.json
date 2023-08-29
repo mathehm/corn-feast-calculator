@@ -17,6 +17,8 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
     "@nuxt/devtools": "latest",
     "@types/node": "^18.17.3",
     "@vitejs/plugin-vue": "^4.3.3",
